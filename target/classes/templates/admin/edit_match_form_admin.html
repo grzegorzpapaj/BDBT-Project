@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Stadium</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+</head>
+<body style="background-color:#e0f0e3;">
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">BDBT Spring Boot Project - Part II</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/main}">Main
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/record_admin}">Contracts
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/record_matches_admin}">Matches
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/record_stadium_admin}">Stadiums
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:inline="text" style="color:lightskyblue;">Logged in as <b
+                            style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b></a>
+                </li>
+
+                <li class="nav-item">
+                    <form method="post" th:action="@{/index}">
+                        <button class="btn btn-primary" type="submit" onclick="successfullyLogout()" value="Sign Out">
+                            Logout
+                        </button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div align = "center">
+    <br/>
+    <h1>Edit Stadium</h1>
+    <br/>
+    <form action="#" th:action="@{/update_match}" th:object="${match}" method="post">
+        <table border = "1" cellpadding = "10">
+            <!-- Table row-->
+            <tr>
+                <td>Stadium ID number:</td>
+                <td><input type="text" th:field="*{nr_stadionu}"></td>
+            </tr>
+            <tr>
+                <td>Date of Match:</td>
+                <td><input type="text" th:field="*{data}"></td>
+            </tr>
+            <tr>
+                <td>Added Time:</td>
+                <td><input type="text" th:field="*{doliczony_czas}"></td>
+            </tr>
+            <tr>
+                <td>Hosts:</td>
+                <td><input type="text" th:field="*{gospodarze}"></td>
+            </tr>
+            <tr>
+                <td>Guests:</td>
+                <td><input type="text" th:field="*{goscie}"></td>
+            </tr>
+            <tr>
+                <td>Took Place?</td>
+                <td><input type="text" th:field="*{czy_sie_odbyl}"></td>
+            </tr>
+            <tr>
+                <td>Hosts' goals</td>
+                <td><input type="text" th:field="*{bramki_gospodarzy}"></td>
+            </tr>
+            <tr>
+                <td>Guests' goals</td>
+                <td><input type="text" th:field="*{bramki_gosci}"></td>
+            </tr>
+            <tr>
+                <td style="text-align: center;" colspan="2"><button class="btn btn-primary" type="submit">Save</button></td>
+            </tr>
+
+        </table>
+    </form>
+</div>
+
+<script th:src="@{/js/script.js}"></script>
+
+</body>
+</html>

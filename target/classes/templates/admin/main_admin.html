@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Main Admin Page</title>
+
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+
+</head>
+<body style="background-color:#e0f0e3;">
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" th:href="@{/main}">BDBT Spring Boot Project - Part II</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/main}">Main
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/record_admin}">Contracts
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/record_matches_admin}">Matches
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/record_stadium_admin}">Stadiums
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:inline="text" style="color:lightskyblue;">Logged in as <b
+                            style="text-transform:capitalize">[[${#httpServletRequest.remoteUser}]]</b></a>
+                </li>
+
+                <li class="nav-item">
+                    <form method="post" th:action="@{/index}">
+                        <button class="btn btn-primary" type="submit" onclick="successfullyLogout()" value="Sign Out">
+                            Logout
+                        </button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-10 mt-5">
+
+            <div class="form-group">
+                <label style="font-size:30px" th:inline="text">Welcome <a
+                        style="color:lightskyblue; text-transform:capitalize"><b>[[${#httpServletRequest.remoteUser}]]</b></a>
+                    to the main page!
+                </label>
+
+                <div style="font-size:20px">If you want to see sponsor contracts, press "Contracts".</div>
+            </div>
+
+            <form method="post" th:action="@{/record_admin}">
+                <button class="btn btn-primary" type="submit" onclick="" value="">Contracts
+                </button>
+            </form>
+            <br/>
+            <br/>
+            <div style="font-size:20px">If you want to manage matches, press "Manage Matches".</div>
+            <br/>
+            <form method="post" th:action="@{/record_matches_admin}">
+                <button class="btn btn-primary" type="submit" onclick="" value="">Manage Matches
+                </button>
+            </form>
+            <br/>
+            <br/>
+            <div style="font-size:20px">If you want to manage stadiums, press "Manage Stadiums".</div>
+            <br/>
+            <form method="post" th:action="@{/record_stadium_admin}">
+                <button class="btn btn-primary" type="submit" onclick="" value="">Manage Stadiums
+                </button>
+            </form>
+            <br/>
+            <br/>
+            <div class="form-group">
+                <div style="font-size:20px">If you want to log out, press "Logout".</div>
+            </div>
+
+            <form method="post" th:action="@{/index}">
+                <button class="btn btn-primary" type="submit" onclick="successfullyLogout()" value="Sign Out">Logout
+                </button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/script.js}"></script>
+
+</body>
+</html>
